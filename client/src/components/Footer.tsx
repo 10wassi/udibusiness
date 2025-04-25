@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/unityofdigitalinnovation"
+                href="https://www.facebook.com/share/12McqEujp7D/?mibextid=LQQJ4d"
                 className="text-gray-400 hover:text-[#0080FF] transition duration-300"
               >
                 <svg
@@ -47,7 +47,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/company/unityofdigitalinnovation"
+                href="https://www.linkedin.com/company/unityofdigitalinnovation/"
                 className="text-gray-400 hover:text-[#0080FF] transition duration-300"
               >
                 <svg
@@ -64,7 +64,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/unityofdigitalinnovation"
+                href="https://www.facebook.com/share/12McqEujp7D/?mibextid=LQQJ4d"
                 className="text-gray-400 hover:text-[#0080FF] transition duration-300"
               >
                 <svg
