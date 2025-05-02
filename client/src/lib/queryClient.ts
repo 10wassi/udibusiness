@@ -9,21 +9,26 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-export async function apiRequest(
-  method: string,
+export const apiRequest = async (
+  method: "GET" | "POST" | "PUT" | "DELETE",
   url: string,
-  data?: unknown | undefined
-): Promise<Response> {
-  const res = await fetch(url, {
+  data?: any
+) => {
+  const response = await fetch(url, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
   });
 
-  await throwIfResNotOk(res);
-  return res;
-}
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || "Une erreur s'est produite");
+  }
+
+  return response.json();
+};
 
 type UnauthorizedBehavior = "returnNull" | "throw";
 export const getQueryFn: <T>(options: {

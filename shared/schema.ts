@@ -71,7 +71,15 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export const insertServiceSchema = createInsertSchema(services);
 export const insertProjectSchema = createInsertSchema(projects);
 export const insertTestimonialSchema = createInsertSchema(testimonials);
-export const insertPartenairesSchema = createInsertSchema(partenaires);
+
+// Exemple de schéma Zod pour validation
+export const insertPartenairesSchema = z.object({
+  name: z.string().nonempty("Le champ nom est requis"),
+  company: z.string().nonempty("Le champ entreprise est requis"),
+  logo: z.string().url("Le logo doit être une URL valide"),
+  link: z.string().url("Le lien doit être une URL valide"),
+});
+
 export const insertContactSchema = createInsertSchema(contacts)
   .pick({
     name: true,
@@ -85,7 +93,7 @@ export const insertContactSchema = createInsertSchema(contacts)
     phone: z.string().optional(),
   });
 
-// Expor ted   types
+// Exported types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 
@@ -98,8 +106,16 @@ export type Project = typeof projects.$inferSelect;
 export type InsertTestimonial = z.infer<typeof insertTestimonialSchema>;
 export type Testimonial = typeof testimonials.$inferSelect;
 
+// Exemple de définition pour Partenaires
+export type Partenaires = {
+  id: number;
+  name: string;
+  company: string;
+  logo: string;
+  link: string;
+};
+
 export type InsertPartenaires = z.infer<typeof insertPartenairesSchema>;
-export type Partenaires = typeof partenaires.$inferSelect;
 
 export type InsertContact = z.infer<typeof insertContactSchema>;
 export type Contact = typeof contacts.$inferSelect;
