@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "../../lib/queryClient";
+import { useToast } from "../../hooks/use-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -12,7 +12,7 @@ import {
   faUser,
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
-import { insertTestimonialSchema, type Testimonial } from "@shared/schema";
+import { insertTestimonialSchema, type Testimonial } from "../../../../shared/schema";
 import { z } from "zod";
 import {
   Card,
@@ -20,7 +20,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "../ui/card";
 import {
   Form,
   FormControl,
@@ -28,10 +28,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+} from "../ui/form";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -42,7 +42,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "../ui/alert-dialog";
 
 const testimonialFormSchema = insertTestimonialSchema;
 type TestimonialFormValues = z.infer<typeof testimonialFormSchema>;

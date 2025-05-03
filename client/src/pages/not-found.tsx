@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faRobot, faServer } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 export default function NotFound() {
   const errorRef = useRef<HTMLDivElement>(null);

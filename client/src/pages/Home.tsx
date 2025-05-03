@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+import  React,{ useEffect } from "react";
 import { Link } from "wouter";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import CTASection from "@/components/CTASection";
-import AboutSection from "@/components/AboutSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import PartenairesSection from "@/components/PartenairesSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { initThreeJsBackground } from "@/lib/threejs";
+import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
+import ServicesSection from "../components/ServicesSection";
+import ProjectsSection from "../components/ProjectsSection";
+import CTASection from "../components/CTASection";
+import AboutSection from "../components/AboutSection";
+import TestimonialsSection from "../components/TestimonialsSection";
+import PartenairesSection from "../components/PartenairesSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { initThreeJsBackground } from "../lib/threejs";
 
 const Home = () => {
   useScrollAnimation();

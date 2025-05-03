@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import  React,{ useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { type Testimonial } from "@shared/schema";
 import gsap from "gsap";
@@ -12,6 +12,8 @@ const TestimonialsSection = () => {
   });
 
   useEffect(() => {
+    if (testimonials.length === 0) return; // Attendez que les témoignages soient chargés
+
     gsap.fromTo(
       "#testimonials-heading *",
       { y: 50, opacity: 0 },

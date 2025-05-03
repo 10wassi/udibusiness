@@ -139,4 +139,12 @@
   .animate-rotate-3d {
     animation: rotate-3d 15s linear infinite;
   }
+
+  .border-border {
+    border-color: #e5e7eb; /* Exemple de couleur */
+  }
+
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
 }

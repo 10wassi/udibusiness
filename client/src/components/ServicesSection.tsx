@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import  React,{ useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,6 +19,8 @@ const ServicesSection = () => {
   });
 
   useEffect(() => {
+    if (services.length === 0) return; // Attendez que les services soient chargés
+
     gsap.fromTo(
       "#services-heading *",
       { y: 50, opacity: 0 },

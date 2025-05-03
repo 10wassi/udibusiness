@@ -8,9 +8,11 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
+  root: path.resolve(__dirname, "client"), // Dossier contenant index.html
   resolve: {
     alias: {
-      "@shared": path.resolve(__dirname, "shared"),
+      "@": path.resolve(__dirname, "/client/src"),
+      "@shared": path.resolve(__dirname, "shared"), // Alias pour le dossier shared
     },
   },
 });

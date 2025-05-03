@@ -1,22 +1,23 @@
+import React from "react";
 import { Switch, Route } from "wouter";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "./components/ui/toaster";
 import { useQuery } from "@tanstack/react-query";
-import Home from "@/pages/Home";
-import Admin from "@/pages/Admin";
-import Login from "@/pages/Login";
-import Portfolio from "@/pages/Portfolio";
-import Equipe from "@/pages/Equipe";
-import ServiceSoftwareDev from "@/pages/ServiceSoftwareDev";
-import ServiceAIBigData from "@/pages/ServiceAIBigData";
-import ServiceAutomation from "@/pages/ServiceAutomation";
-import ServiceDigitalConsulting from "@/pages/ServiceDigitalConsulting";
-import NotFound from "@/pages/not-found";
-import ProgressBar from "@/components/ProgressBar";
-import CustomCursor from "@/components/CustomCursor";
-import CTABubble from "@/components/CTABubble";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import WhatsAppAutomation from "@/pages/ValueProposition/WhatsAppAutomation";
-import TimeAndMoneySaving from "@/pages/ValueProposition/TimeAndMoneySaving";
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
+import Login from "./pages/Login";
+import Portfolio from "./pages/Portfolio";
+import Equipe from "./pages/Equipe";
+import ServiceSoftwareDev from "./pages/ServiceSoftwareDev";
+import ServiceAIBigData from "./pages/ServiceAIBigData";
+import ServiceAutomation from "./pages/ServiceAutomation";
+import ServiceDigitalConsulting from "./pages/ServiceDigitalConsulting";
+import NotFound from "./pages/not-found";
+import ProgressBar from "./components/ProgressBar";
+import CustomCursor from "./components/CustomCursor";
+import CTABubble from "./components/CTABubble";
+import WhatsAppButton from "./components/WhatsAppButton";
+import WhatsAppAutomation from "./pages/ValueProposition/WhatsAppAutomation";
+import TimeAndMoneySaving from "./pages/ValueProposition/TimeAndMoneySaving";
 
 function App() {
   // Check authentication status

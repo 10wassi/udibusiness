@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import  React,{ useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { type Project } from "@shared/schema";
 import gsap from "gsap";
@@ -43,6 +43,8 @@ const ProjectsSection = () => {
   }, [activeCategory, refetch]);
 
   useEffect(() => {
+    if (projects.length === 0) return; // Attendez que les projets soient chargés
+
     gsap.fromTo(
       "#projects-heading *",
       { y: 50, opacity: 0 },

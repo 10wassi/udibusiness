@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import  React,{ useEffect, useRef, useState } from 'react';
 import ThreeBackground from './ThreeBackground';
 import Logo from './logo';
 import gsap from 'gsap';

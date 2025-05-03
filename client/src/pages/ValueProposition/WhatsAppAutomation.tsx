@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faRobot, faComment, faChartLine, faUsers, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'wouter';
-import AutomationPlatformsDemo from '@/components/AutomationPlatformsDemo';
+import AutomationPlatformsDemo from "../../components/AutomationPlatformsDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 

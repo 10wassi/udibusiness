@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import  React,{ useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "../lib/queryClient";
+import { useToast } from "../hooks/use-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { insertContactSchema } from "@shared/schema";
+import { insertContactSchema } from "../../../shared/schema";
 
 gsap.registerPlugin(ScrollTrigger);
 

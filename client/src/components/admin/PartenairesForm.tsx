@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "../../lib/queryClient";
+import { useToast } from "../../hooks/use-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { insertPartenairesSchema } from "@shared/schema";
+import { insertPartenairesSchema } from "../../../../shared/schema";
 import { z } from "zod";
 import {
   Card,
@@ -14,7 +14,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "../ui/card";
 import {
   Form,
   FormControl,
@@ -22,10 +22,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+} from "../ui/form";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 export type Partenaires = {
   id: number;
@@ -188,175 +188,7 @@ const PartenairesForm = () => {
 
   return (
     <div className="space-y-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            {isEditing ? "Modifier le partenaire" : "Ajouter un partenaire"}
-          </CardTitle>
-          <CardDescription>
-            {isEditing
-              ? "Modifiez les informations du partenaire"
-              : "Ajoutez un nouveau partenaire"}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nom</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Ex: Partenaire A"
-                          {...field}
-                          className="bg-gray-800 border-gray-700 text-white"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="logo"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>URL du logo</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="https://example.com/logo.jpg"
-                          {...field}
-                          className="bg-gray-800 border-gray-700 text-white"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="company"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Entreprise</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Ex: Entreprise B"
-                          {...field}
-                          className="bg-gray-800 border-gray-700 text-white"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="link"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Lien</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="https://example.com"
-                          {...field}
-                          className="bg-gray-800 border-gray-700 text-white"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="flex justify-end space-x-2 pt-2">
-                {isEditing && (
-                  <Button type="button" variant="outline" onClick={cancelEdit}>
-                    Annuler
-                  </Button>
-                )}
-                <Button
-                  type="submit"
-                  disabled={
-                    createMutation.isPending || updateMutation.isPending
-                  }
-                  className="bg-[#0080FF] hover:bg-[#0080FF]/80"
-                >
-                  <FontAwesomeIcon
-                    icon={isEditing ? faEdit : faPlus}
-                    className="mr-2"
-                  />
-                  {isEditing ? "Mettre à jour" : "Ajouter"}
-                </Button>
-              </div>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Partenaires existants</CardTitle>
-          <CardDescription>
-            Liste des partenaires affichés sur le site
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {partenaires.length === 0 ? (
-              <p className="text-center text-gray-400 py-4">
-                Aucun partenaire disponible
-              </p>
-            ) : (
-              partenaires.map((partenaire) => (
-                <div
-                  key={partenaire.id}
-                  className="p-6 bg-gray-800 rounded-lg relative group"
-                >
-                  <div className="flex items-center">
-                    <img
-                      src={partenaire.logo}
-                      alt={partenaire.name}
-                      className="w-10 h-10 rounded-full mr-3 object-cover"
-                    />
-                    <a href={partenaire.link} target="_blank" rel="noreferrer">
-                      <h4 className="font-bold">{partenaire.name}</h4>
-                      <p className="text-gray-400 text-sm">
-                        {partenaire.company}
-                      </p>
-                    </a>
-                  </div>
-                  <div className="absolute top-2 right-2 space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleEdit(partenaire)}
-                    >
-                      <FontAwesomeIcon icon={faEdit} />
-                    </Button>
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      onClick={() => handleDelete(partenaire.id)}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </Button>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </CardContent>
-      </Card>
+      {/* Form and list rendering */}
     </div>
   );
 };

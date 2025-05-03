@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import AdminLayout from "@/components/admin/AdminLayout";
-import ServiceForm from "@/components/admin/ServiceForm";
-import ProjectForm from "@/components/admin/ProjectForm";
-import TestimonialForm from "@/components/admin/TestimonialForm";
-import PartenairesForm from "@/components/admin/PartenairesForm";
-import ContactList from "@/components/admin/ContactList";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
+import AdminLayout from "../components/admin/AdminLayout";
+import ServiceForm from "../components/admin/ServiceForm";
+import ProjectForm from "../components/admin/ProjectForm";
+import TestimonialForm from "../components/admin/TestimonialForm";
+import PartenairesForm from "../components/admin/PartenairesForm";
+import ContactList from "../components/admin/ContactList";
 
 const Admin = () => {
   const [, setLocation] = useLocation();

@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faLightbulb, faLayerGroup, faUsers, faRoute, faRocket, faShieldAlt, faSitemap } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 

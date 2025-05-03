@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import  React,{ useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp, faFacebook, faTelegram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -246,73 +246,18 @@ const AutomationPlatformsDemo: React.FC<AutomationPlatformsDemoProps> = ({
         
         {/* Messages container */}
         <div className="p-4 h-[calc(100%-60px)] overflow-y-auto flex flex-col">
-          <AnimatePresence mode="wait">
-            {/* User message */}
-            <motion.div 
-              key={`msg-${currentPlatform}-${currentMessageIndex}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="flex justify-end mb-4"
-            >
-              <div className="flex items-end">
-                <div className="bg-gray-700 p-3 rounded-lg rounded-br-none max-w-[80%] text-sm">
-                  <div className="whitespace-pre-line">{config.messages[currentMessageIndex]}</div>
-                </div>
-                <div className="w-6 h-6 rounded-full bg-gray-600 ml-2 flex-shrink-0 flex items-center justify-center">
-                  <FontAwesomeIcon icon={faUser} className="text-white text-xs" />
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Typing indicator */}
-            {typing && (
+          <AnimatePresence>
+            {config.messages.map((message, index) => (
               <motion.div 
-                key={`typing-${currentPlatform}-${currentMessageIndex}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                className="flex mb-4"
-              >
-                <div className="flex items-end">
-                  <div className={`w-6 h-6 rounded-full mr-2 flex-shrink-0 flex items-center justify-center`} 
-                    style={{ backgroundColor: config.color }}>
-                    <FontAwesomeIcon icon={faRobot} className="text-white text-xs" />
-                  </div>
-                  <div className={`p-3 rounded-lg rounded-bl-none`} style={{ backgroundColor: `${config.color}30` }}>
-                    <div className="flex space-x-1">
-                      <span className="typing-dot animate-bounce delay-0"></span>
-                      <span className="typing-dot animate-bounce delay-150"></span>
-                      <span className="typing-dot animate-bounce delay-300"></span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-            
-            {/* Bot response */}
-            {showResponse && (
-              <motion.div 
-                key={`response-${currentPlatform}-${currentMessageIndex}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                key={index} 
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                exit={{ opacity: 0, y: -10 }} 
                 transition={{ duration: 0.3 }}
-                className="flex mb-4"
               >
-                <div className="flex items-end">
-                  <div className={`w-6 h-6 rounded-full mr-2 flex-shrink-0 flex items-center justify-center`} 
-                    style={{ backgroundColor: config.color }}>
-                    <FontAwesomeIcon icon={faRobot} className="text-white text-xs" />
-                  </div>
-                  <div className={`p-3 rounded-lg rounded-bl-none max-w-[80%] text-sm`} 
-                    style={{ backgroundColor: `${config.color}30` }}>
-                    <div className="whitespace-pre-line">{config.responses[currentMessageIndex]}</div>
-                  </div>
-                </div>
+                {message}
               </motion.div>
-            )}
+            ))}
           </AnimatePresence>
         </div>
         

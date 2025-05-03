@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import  React,{ useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { type Partenaires } from "@shared/schema";
 import gsap from "gsap";
@@ -12,6 +12,8 @@ const PartenairesSection = () => {
   });
 
   useEffect(() => {
+    if (partenaires.length === 0) return; // Attendez que les partenaires soient chargés
+
     gsap.fromTo(
       "#partenaires-heading *",
       { y: 50, opacity: 0 },
